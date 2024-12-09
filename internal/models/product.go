@@ -1,0 +1,9 @@
+package models
+
+type Product struct {
+	ID          int
+	Name        string
+	Price       float64
+	Description string
+	Category    string
+}

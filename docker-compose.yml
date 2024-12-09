@@ -1,0 +1,26 @@
+
+
+services:
+  terminal-cafe:
+    build: .
+    ports:
+      - "2222:2222"
+    environment:
+      - CAFE_EMAIL=${CAFE_EMAIL}
+      - CAFE_EMAIL_PASSWORD=${CAFE_EMAIL_PASSWORD}
+      - CAFE_NOTIFICATION_EMAIL=${CAFE_NOTIFICATION_EMAIL}
+      - CAFE_SMTP_HOST=${CAFE_SMTP_HOST}
+      - CAFE_SMTP_PORT=${CAFE_SMTP_PORT}
+      - MP_ACCESS_TOKEN=${MP_ACCESS_TOKEN}
+      - CORREIOS_CODE=${CORREIOS_CODE}
+      - CORREIOS_PASSWORD=${CORREIOS_PASSWORD}
+      - STORE_CEP=${STORE_CEP}
+    volumes:
+      - ssh_keys:/app/keys
+      - ./.env:/app/.env
+      - ./server.key:/app/server.key:ro
+      - ./products/menu.md:/app/products/menu.md:ro
+    restart: unless-stopped
+
+volumes:
+  ssh_keys: 
